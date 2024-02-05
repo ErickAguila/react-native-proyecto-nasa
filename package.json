@@ -7,9 +7,11 @@
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
+    "setup:ios": "[ -d 'ios/Pods' ] && rm -rf ios/Pods; npx react-native setup-ios-permissions && npx pod-install",
     "test": "jest"
   },
   "dependencies": {
+    "date-fns": "^3.3.1",
     "react": "18.2.0",
     "react-native": "0.73.3"
   },
