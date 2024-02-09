@@ -5,10 +5,11 @@ import TodaysImage from '../../components/TodaysImage';
 import fetchApi from '../../utils/fetch';
 import {PostImage} from '../../types';
 import {format, sub} from 'date-fns';
+import LastFiveDaysImages from '../../components/LastFiveDaysImages';
 
 const Home = () => {
   const [todayImage, setTodayImage] = useState<PostImage>({});
-  const [lastFiveDaysImages, setLastFiveDaysImages] = useState([]);
+  const [lastFiveDaysImages, setLastFiveDaysImages] = useState<PostImage[]>([]);
 
   useEffect(() => {
     const loadTodaysImage = async () => {
@@ -30,6 +31,8 @@ const Home = () => {
         const lastFiveDaysImagesResponse = await fetchApi(
           `&start_date=${fiveDaysAgoDate}&end_date=${todayDate}`,
         );
+
+        setLastFiveDaysImages(lastFiveDaysImagesResponse);
       } catch (error) {
         console.error(error);
       }
@@ -43,6 +46,7 @@ const Home = () => {
     <View style={styles.container}>
       <Header />
       <TodaysImage {...todayImage} />
+      <LastFiveDaysImages postImages={lastFiveDaysImages}/>
     </View>
   );
 };
