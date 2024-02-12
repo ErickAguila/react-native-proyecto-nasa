@@ -7,7 +7,7 @@
 
 import React from 'react';
 import {SafeAreaView, StyleSheet, Platform, View} from 'react-native';
-import Home from './src/views/Home';
+import Routes from './src/routes/Routes';
 
 function App(): React.JSX.Element {
   return (
@@ -18,7 +18,7 @@ function App(): React.JSX.Element {
           paddingHorizontal: 15,
           paddingTop: Platform.OS === 'android' && 30,
         }}>
-        <Home />
+        <Routes />
       </View>
     </SafeAreaView>
   );
